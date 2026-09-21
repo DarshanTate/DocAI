@@ -5,12 +5,23 @@ from app.services.document_repository import DocumentRepository
 from app.services.document_service import DocumentService
 from app.services.storage import FileStorageService
 
+from app.services.job_queue import JobQueue
+from app.services.job_repository import JobRepository
+from app.services.job_service import JobService
+
 
 router = APIRouter(
     prefix="/documents",
     tags=["Documents"],
 )
 
+job_repository = JobRepository()
+job_queue = JobQueue()
+
+job_service = JobService(
+    repository=job_repository,
+    queue=job_queue,
+)
 
 repository = DocumentRepository()
 storage = FileStorageService()
@@ -34,6 +45,10 @@ async def upload_document(
         content=content,
         file_type=file.content_type or "application/octet-stream",
     )
+
+    job = job_service.create_document_job(
+    document_id=document.id
+)
 
     return DocumentResponse(
         id=document.id,
