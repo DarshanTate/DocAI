@@ -1,20 +1,58 @@
 from uuid import UUID
 
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
 from app.models.job import ProcessingJob
 
 
 class JobRepository:
 
-    def __init__(self):
-        self._jobs: dict[UUID, ProcessingJob] = {}
+    def create(
+        self,
+        db: Session,
+        job: ProcessingJob,
+    ) -> ProcessingJob:
 
-    def create(self, job: ProcessingJob) -> ProcessingJob:
-        self._jobs[job.id] = job
+        db.add(job)
+        db.commit()
+        db.refresh(job)
+
         return job
 
-    def get(self, job_id: UUID) -> ProcessingJob | None:
-        return self._jobs.get(job_id)
+    def get(
+        self,
+        db: Session,
+        job_id: UUID,
+    ) -> ProcessingJob | None:
 
-    def update(self, job: ProcessingJob) -> ProcessingJob:
-        self._jobs[job.id] = job
+        statement = select(ProcessingJob).where(
+            ProcessingJob.id == job_id
+        )
+
+        return db.scalar(statement)
+
+    def get_by_document_id(
+        self,
+        db: Session,
+        document_id: UUID,
+    ) -> ProcessingJob | None:
+
+        statement = (
+            select(ProcessingJob)
+            .where(ProcessingJob.document_id == document_id)
+            .order_by(ProcessingJob.created_at.desc())
+        )
+
+        return db.scalar(statement)
+
+    def update(
+        self,
+        db: Session,
+        job: ProcessingJob,
+    ) -> ProcessingJob:
+
+        db.commit()
+        db.refresh(job)
+
         return job

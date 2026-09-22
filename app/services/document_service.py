@@ -1,47 +1,95 @@
-from datetime import datetime, timezone
-from uuid import uuid4
+from uuid import UUID, uuid4
+
+from fastapi import HTTPException, UploadFile, status
+from sqlalchemy.orm import Session
 
 from app.models.document import Document, DocumentStatus
 from app.services.document_repository import DocumentRepository
+from app.services.document_validator import DocumentValidator
+from app.services.job_service import JobService
 from app.services.storage import FileStorageService
 
 
 class DocumentService:
-    def __init__(
-        self,
-        repository: DocumentRepository,
-        storage: FileStorageService,
-    ):
-        self.repository = repository
-        self.storage = storage
+
+    def __init__(self):
+        self.repository = DocumentRepository()
+        self.storage = FileStorageService()
+        self.validator = DocumentValidator()
+        self.job_service = JobService()
 
     def upload_document(
         self,
-        filename: str,
-        content: bytes,
-        file_type: str,
+        db: Session,
+        file: UploadFile,
     ) -> Document:
+
+        self.validator.validate(file)
 
         document_id = uuid4()
 
-        now = datetime.now(timezone.utc)
-
-        storage_path = self.storage.save_file(
+        storage_path, file_size = self.storage.save_file(
+            file=file,
             document_id=document_id,
-            filename=filename,
-            content=content,
         )
 
         document = Document(
             id=document_id,
-            filename=filename,
-            original_filename=filename,
-            file_type=file_type,
-            file_size=len(content),
-            storage_path=str(storage_path),
+            filename=file.filename,
+            original_filename=file.filename,
+            file_type=file.content_type or "application/octet-stream",
+            file_size=file_size,
+            storage_path=storage_path,
             status=DocumentStatus.UPLOADED,
-            created_at=now,
-            updated_at=now,
         )
 
-        return self.repository.create(document)
+        document = self.repository.create(
+            db=db,
+            document=document,
+        )
+
+        self.job_service.create_job(
+            db=db,
+            document_id=document.id,
+        )
+
+        return document
+
+    def get_document(
+        self,
+        db: Session,
+        document_id: UUID,
+    ) -> Document:
+
+        document = self.repository.get(
+            db=db,
+            document_id=document_id,
+        )
+
+        if document is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Document not found.",
+            )
+
+        return document
+
+    def list_documents(
+        self,
+        db: Session,
+    ) -> list[Document]:
+
+        return self.repository.list(db=db)
+
+    def get_document_status(
+        self,
+        db: Session,
+        document_id: UUID,
+    ) -> DocumentStatus:
+
+        document = self.get_document(
+            db=db,
+            document_id=document_id,
+        )
+
+        return document.status

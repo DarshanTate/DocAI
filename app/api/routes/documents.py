@@ -1,13 +1,14 @@
-from fastapi import APIRouter, File, UploadFile
+from uuid import UUID
 
-from app.schemas.document import DocumentResponse
-from app.services.document_repository import DocumentRepository
+from fastapi import APIRouter, Depends, File, UploadFile, status
+from sqlalchemy.orm import Session
+
+from app.db.database import get_db
+from app.schemas.document import (
+    DocumentResponse,
+    DocumentStatusResponse,
+)
 from app.services.document_service import DocumentService
-from app.services.storage import FileStorageService
-
-from app.services.job_queue import JobQueue
-from app.services.job_repository import JobRepository
-from app.services.job_service import JobService
 
 
 router = APIRouter(
@@ -15,69 +16,64 @@ router = APIRouter(
     tags=["Documents"],
 )
 
-job_repository = JobRepository()
-job_queue = JobQueue()
-
-job_service = JobService(
-    repository=job_repository,
-    queue=job_queue,
-)
-
-repository = DocumentRepository()
-storage = FileStorageService()
-document_service = DocumentService(
-    repository=repository,
-    storage=storage,
-)
+document_service = DocumentService()
 
 
 @router.post(
-    "",
+    "/upload",
     response_model=DocumentResponse,
+    status_code=status.HTTP_201_CREATED,
 )
-async def upload_document(
+def upload_document(
     file: UploadFile = File(...),
+    db: Session = Depends(get_db),
 ):
-    content = await file.read()
-
-    document = document_service.upload_document(
-        filename=file.filename or "unknown",
-        content=content,
-        file_type=file.content_type or "application/octet-stream",
+    return document_service.upload_document(
+        db=db,
+        file=file,
     )
 
-    job = job_service.create_document_job(
-    document_id=document.id
-)
-
-    return DocumentResponse(
-        id=document.id,
-        filename=document.filename,
-        original_filename=document.original_filename,
-        file_type=document.file_type,
-        file_size=document.file_size,
-        status=document.status,
-        created_at=document.created_at,
-        updated_at=document.updated_at,
-    )
 
 @router.get(
-    "",
+    "/",
     response_model=list[DocumentResponse],
 )
-async def list_documents():
-    documents = repository.list()
+def list_documents(
+    db: Session = Depends(get_db),
+):
+    return document_service.list_documents(
+        db=db,
+    )
 
-    return [
-        DocumentResponse(
-            id=document.id,
-            filename=document.filename,
-            original_filename=document.original_filename,
-            file_type=document.file_type,
-            file_size=document.file_size,
-            status=document.status,
-            created_at=document.created_at,
-            updated_at=document.updated_at,
-        )
-        for document in documents
-    ]
+
+@router.get(
+    "/{document_id}",
+    response_model=DocumentResponse,
+)
+def get_document(
+    document_id: UUID,
+    db: Session = Depends(get_db),
+):
+    return document_service.get_document(
+        db=db,
+        document_id=document_id,
+    )
+
+
+@router.get(
+    "/{document_id}/status",
+    response_model=DocumentStatusResponse,
+)
+def get_document_status(
+    document_id: UUID,
+    db: Session = Depends(get_db),
+):
+    document_status = document_service.get_document_status(
+        db=db,
+        document_id=document_id,
+    )
+
+    return DocumentStatusResponse(
+        document_id=document_id,
+        status=document_status,
+    )

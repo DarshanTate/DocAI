@@ -1,30 +1,43 @@
 from pathlib import Path
 from uuid import UUID
 
+from fastapi import UploadFile
+
 
 class FileStorageService:
-    def __init__(self, base_path: str = "storage/documents"):
-        self.base_path = Path(base_path)
-        self.base_path.mkdir(parents=True, exist_ok=True)
+    BASE_DIR = Path("storage/documents")
 
-    def get_document_path(
-        self,
-        document_id: UUID,
-        filename: str,
-    ) -> Path:
-        document_directory = self.base_path / str(document_id)
-        document_directory.mkdir(parents=True, exist_ok=True)
-
-        return document_directory / filename
+    def __init__(self):
+        self.BASE_DIR.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
 
     def save_file(
         self,
+        file: UploadFile,
         document_id: UUID,
-        filename: str,
-        content: bytes,
-    ) -> Path:
-        path = self.get_document_path(document_id, filename)
+    ) -> tuple[str, int]:
 
-        path.write_bytes(content)
+        document_dir = self.BASE_DIR / str(document_id)
+        document_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
 
-        return path
+        filename = Path(file.filename or "uploaded_file").name
+        file_path = document_dir / filename
+
+        total_size = 0
+
+        with file_path.open("wb") as buffer:
+            while True:
+                chunk = file.file.read(1024 * 1024)
+
+                if not chunk:
+                    break
+
+                buffer.write(chunk)
+                total_size += len(chunk)
+
+        return str(file_path), total_size

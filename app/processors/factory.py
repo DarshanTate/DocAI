@@ -31,5 +31,5 @@ class DocumentProcessorFactory:
                 return processor
 
         raise ValueError(
-            f"Unsupported document type: {file_path.suffix}"
+            f"No processor available for {file_path.suffix}"
         )

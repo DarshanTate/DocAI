@@ -1,4 +1,5 @@
 import json
+from uuid import UUID
 
 from app.db.redis import redis_client
 
@@ -10,11 +11,13 @@ class JobQueue:
 
     def enqueue_document_processing(
         self,
-        document_id: str,
+        job_id: UUID,
+        document_id: UUID,
     ) -> None:
 
         job = {
-            "document_id": document_id,
+            "job_id": str(job_id),
+            "document_id": str(document_id),
         }
 
         redis_client.rpush(
