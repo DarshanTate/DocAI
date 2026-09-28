@@ -1,25 +1,19 @@
-from app.services.retrieval.vector_store import VectorStore
-
-
 class ContextBuilder:
 
-    def __init__(self):
-        self.vector_store = VectorStore()
-
-    def build(
-        self,
-        results,
-    ) -> str:
+    def build(self, results):
 
         context_parts = []
 
-        for index, result in enumerate(results, start=1):
+        for index, result in enumerate(
+            results,
+            start=1,
+        ):
 
-            payload = result.payload
+            payload = result.payload or {}
 
-            content = payload.get(
-                "content",
-                "",
+            document_id = payload.get(
+                "document_id",
+                "unknown",
             )
 
             metadata = payload.get(
@@ -27,15 +21,24 @@ class ContextBuilder:
                 {},
             )
 
+            content = payload.get(
+                "content",
+                "",
+            )
+
+            source_location = self._format_location(
+                metadata
+            )
+
             context_parts.append(
                 f"""
-SOURCE {index}
+[Source {index}]
 
 Document ID:
-{payload.get("document_id")}
+{document_id}
 
-Metadata:
-{metadata}
+Location:
+{source_location}
 
 Content:
 {content}
@@ -43,3 +46,19 @@ Content:
             )
 
         return "\n\n".join(context_parts)
+
+    def _format_location(self, metadata):
+
+        if "page" in metadata:
+            return f"Page {metadata['page']}"
+
+        if "slide" in metadata:
+            return f"Slide {metadata['slide']}"
+
+        if "sheet" in metadata:
+            return f"Sheet {metadata['sheet']}"
+
+        if "row" in metadata:
+            return f"Row {metadata['row']}"
+
+        return "Document"

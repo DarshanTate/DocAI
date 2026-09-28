@@ -7,6 +7,7 @@ from app.processors.pdf import PDFProcessor
 from app.processors.pptx import PPTXProcessor
 from app.processors.txt import TXTProcessor
 from app.processors.xlsx import XLSXProcessor
+from app.processors.image import ImageProcessor
 
 
 class DocumentProcessorFactory:
@@ -19,6 +20,7 @@ class DocumentProcessorFactory:
             CSVProcessor(),
             PPTXProcessor(),
             TXTProcessor(),
+            ImageProcessor(),
         ]
 
     def get_processor(

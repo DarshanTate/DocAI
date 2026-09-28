@@ -2,10 +2,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ollama_url: str = "http://localhost:11434"
 ollama_model: str = "qwen2.5-coder:3b"
+
+
 class Settings(BaseSettings):
     app_name: str = "DocAI"
     app_version: str = "0.1.0"
     environment: str = "development"
+    secret_key: str
 
     database_url: str
     redis_url: str = "redis://localhost:6379/0"

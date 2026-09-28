@@ -1,7 +1,7 @@
 import json
 import logging
 from uuid import UUID
-
+from app.models.user import User
 from app.db.database import SessionLocal
 from app.db.redis import redis_client
 from app.models.document import DocumentStatus
@@ -97,6 +97,7 @@ def process_job(payload: dict) -> None:
 
         vector_store.add_chunks(
             document_id=document_id,
+            owner_id=document.owner_id,
             chunks=chunks,
             embeddings=embeddings,
         )
@@ -125,6 +126,7 @@ def process_job(payload: dict) -> None:
         )
 
     except Exception as exc:
+        db.rollback()
         logger.exception(
             "Failed processing document %s",
             document_id,

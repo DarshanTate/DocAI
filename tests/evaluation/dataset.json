@@ -1,0 +1,12 @@
+[
+  {
+    "question": "What is the document about?",
+    "expected_answer": "",
+    "relevant_document_ids": []
+  },
+  {
+    "question": "What is the main conclusion?",
+    "expected_answer": "",
+    "relevant_document_ids": []
+  }
+]

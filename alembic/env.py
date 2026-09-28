@@ -7,6 +7,7 @@ from alembic import context
 from app.db.database import Base
 from app.models.document import Document
 from app.models.job import ProcessingJob
+from app.models.user import User
 
 from app.core.config import settings
 

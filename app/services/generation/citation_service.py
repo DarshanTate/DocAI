@@ -7,14 +7,16 @@ class CitationService:
             payload = result.payload or {}
             metadata = payload.get("metadata", {})
 
-            citations.append(
-                {
-                    "source_number": index,
-                    "document_id": payload.get("document_id"),
-                    "score": result.score,
-                    "content": payload.get("content", ""),
-                    "metadata": metadata,
-                }
-            )
+            citations.append({
+                "source_number": index,
+                "document_id": payload.get("document_id"),
+                "content": payload.get("content", ""),
+                "score": float(result.score),
+                "reranker_score": payload.get(
+                    "reranker_score",
+                    0.0,
+                ),
+                "metadata": metadata,
+            })
 
         return citations

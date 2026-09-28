@@ -1,24 +1,37 @@
-from app.services.embeddings.embedding_service import EmbeddingService
-from app.services.retrieval.vector_store import VectorStore
+from uuid import UUID
+
+from app.services.retrieval.hybrid_retrieval import HybridRetrieval
+from app.services.retrieval.reranker import Reranker
 
 
 class RetrievalService:
-
     def __init__(self):
-        self.embedding_service = EmbeddingService()
-        self.vector_store = VectorStore()
+        self.hybrid_retrieval = HybridRetrieval()
+        self.reranker = Reranker()
 
     def retrieve(
         self,
         question: str,
+        owner_id: UUID,
+        document_ids: list[UUID] | None = None,
         top_k: int = 5,
     ):
-
-        embedding = self.embedding_service.embed_text(
-            question
+        # Retrieve a larger candidate set first.
+        candidates = self.hybrid_retrieval.retrieve(
+            question=question,
+            owner_id=owner_id,
+            document_ids=document_ids,
+            top_k=top_k * 3,
         )
 
-        return self.vector_store.search(
-            embedding=embedding,
-            limit=top_k,
+        if not candidates:
+            return []
+
+        # Rerank the larger candidate set.
+        results = self.reranker.rerank(
+            question=question,
+            results=candidates,
+            top_k=top_k,
         )
+
+        return results
