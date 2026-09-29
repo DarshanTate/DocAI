@@ -25,3 +25,9 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+.env
+.venv/
+__pycache__/
+*.pyc
+storage/

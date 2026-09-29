@@ -1,42 +1,41 @@
-import json
 from collections.abc import Generator
 
-import httpx
+from groq import Groq
 
 from app.core.config import settings
 
 
 class LLMService:
+
     def __init__(self):
-        self.url = f"{settings.ollama_url}/api/generate"
-        self.model = settings.ollama_model
+        self.client = Groq(
+            api_key=settings.groq_api_key
+        )
+        self.model = settings.groq_model
 
-    def generate_stream(self, prompt: str) -> Generator[str, None, None]:
-        payload = {
-            "model": self.model,
-            "prompt": prompt,
-            "stream": True,
-        }
+    def generate_stream(
+        self,
+        prompt: str,
+    ) -> Generator[str, None, None]:
 
-        with httpx.stream(
-            "POST",
-            self.url,
-            json=payload,
-            timeout=120.0,
-        ) as response:
+        stream = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            stream=True,
+            temperature=0.2,
+        )
 
-            response.raise_for_status()
+        for chunk in stream:
 
-            for line in response.iter_lines():
-                if not line:
-                    continue
+            if not chunk.choices:
+                continue
 
-                data = json.loads(line)
+            content = chunk.choices[0].delta.content
 
-                chunk = data.get("response", "")
-
-                if chunk:
-                    yield chunk
-
-                if data.get("done"):
-                    break
+            if content:
+                yield content

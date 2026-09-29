@@ -1,13 +1,11 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-ollama_url: str = "http://localhost:11434"
-ollama_model: str = "qwen2.5-coder:3b"
-
 
 class Settings(BaseSettings):
     app_name: str = "DocAI"
     app_version: str = "0.1.0"
     environment: str = "development"
+
     secret_key: str
 
     database_url: str
@@ -16,8 +14,19 @@ class Settings(BaseSettings):
     qdrant_url: str = "http://localhost:6333"
     qdrant_collection: str = "docai_chunks"
 
+    groq_api_key: str
+    groq_model: str = "openai/gpt-oss-20b"
+
+    storage_backend: str = "local"
+
+    s3_bucket: str = ""
+    s3_region: str = "auto"
+    s3_endpoint_url: str = ""
+    s3_access_key: str = ""
+    s3_secret_key: str = ""
+
     ollama_url: str = "http://localhost:11434"
-    ollama_model: str = "qwen2.5:3b"
+    ollama_model: str = "qwen2.5-coder:3b"
 
     max_file_size_mb: int = 50
 
@@ -37,5 +46,6 @@ class Settings(BaseSettings):
             extension.strip().lower()
             for extension in self.allowed_extensions.split(",")
         }
+
 
 settings = Settings()
