@@ -28,6 +28,6 @@ COPY alembic ./alembic
 # Create required runtime directories
 RUN mkdir -p /app/storage/documents /app/storage/temp
 
-EXPOSE 8000
+EXPOSE 10000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
