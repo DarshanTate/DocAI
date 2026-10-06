@@ -1,0 +1,331 @@
+{
+  "name": "DocAI RAG Evaluation Dataset",
+  "source": "ISO/IEC 27001:2022 uploaded PDF",
+  "version": "1.0",
+  "questions": [
+    {
+      "id": "q01",
+      "question": "What is the purpose of ISO/IEC 27001 as described in the introduction?",
+      "gold_sections": [
+        "0.1 General"
+      ],
+      "gold_pdf_pages": [
+        5
+      ],
+      "expected_keywords": [
+        "information security management system",
+        "confidentiality",
+        "integrity",
+        "availability",
+        "risk management"
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "What does Clause 4.1 require an organization to determine?",
+      "gold_sections": [
+        "4.1 Understanding the organization and its context"
+      ],
+      "gold_pdf_pages": [
+        7
+      ],
+      "expected_keywords": [
+        "external and internal issues",
+        "relevant to its purpose",
+        "intended outcome"
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "What must an organization determine when identifying the needs and expectations of interested parties?",
+      "gold_sections": [
+        "4.2 Understanding the needs and expectations of interested parties"
+      ],
+      "gold_pdf_pages": [
+        7
+      ],
+      "expected_keywords": [
+        "interested parties",
+        "relevant requirements",
+        "information security management system"
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "What factors must be considered when determining the scope of the information security management system?",
+      "gold_sections": [
+        "4.3 Determining the scope of the information security management system"
+      ],
+      "gold_pdf_pages": [
+        8
+      ],
+      "expected_keywords": [
+        "external and internal issues",
+        "interested parties",
+        "interfaces and dependencies"
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "What responsibilities does top management have under Clause 5.1?",
+      "gold_sections": [
+        "5.1 Leadership and commitment"
+      ],
+      "gold_pdf_pages": [
+        8
+      ],
+      "expected_keywords": [
+        "policy",
+        "objectives",
+        "resources",
+        "communication",
+        "continual improvement"
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "What must an information security policy include under Clause 5.2?",
+      "gold_sections": [
+        "5.2 Policy"
+      ],
+      "gold_pdf_pages": [
+        9
+      ],
+      "expected_keywords": [
+        "information security objectives",
+        "applicable requirements",
+        "continual improvement"
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "What criteria must be established as part of the information security risk assessment process?",
+      "gold_sections": [
+        "6.1.2 Information security risk assessment"
+      ],
+      "gold_pdf_pages": [
+        10
+      ],
+      "expected_keywords": [
+        "risk acceptance criteria",
+        "criteria for performing information security risk assessments"
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "How does Clause 6.1.2 require information security risks to be analyzed?",
+      "gold_sections": [
+        "6.1.2 Information security risk assessment"
+      ],
+      "gold_pdf_pages": [
+        10
+      ],
+      "expected_keywords": [
+        "potential consequences",
+        "likelihood",
+        "levels of risk"
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "What is required in a Statement of Applicability under Clause 6.1.3?",
+      "gold_sections": [
+        "6.1.3 Information security risk treatment"
+      ],
+      "gold_pdf_pages": [
+        10,
+        11
+      ],
+      "expected_keywords": [
+        "necessary controls",
+        "justification",
+        "implemented",
+        "excluded"
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "What characteristics should information security objectives have under Clause 6.2?",
+      "gold_sections": [
+        "6.2 Information security objectives and planning to achieve them"
+      ],
+      "gold_pdf_pages": [
+        11
+      ],
+      "expected_keywords": [
+        "consistent with the information security policy",
+        "measurable",
+        "monitored",
+        "communicated",
+        "updated"
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "What does Clause 7.2 require regarding competence?",
+      "gold_sections": [
+        "7.2 Competence"
+      ],
+      "gold_pdf_pages": [
+        12
+      ],
+      "expected_keywords": [
+        "necessary competence",
+        "education",
+        "training",
+        "experience",
+        "effectiveness"
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "What activities must be addressed when controlling documented information under Clause 7.5.3?",
+      "gold_sections": [
+        "7.5.3 Control of documented information"
+      ],
+      "gold_pdf_pages": [
+        13
+      ],
+      "expected_keywords": [
+        "distribution",
+        "access",
+        "retrieval",
+        "storage",
+        "control of changes",
+        "retention"
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "When must information security risk assessments be performed under Clause 8.2?",
+      "gold_sections": [
+        "8.2 Information security risk assessment"
+      ],
+      "gold_pdf_pages": [
+        14
+      ],
+      "expected_keywords": [
+        "planned intervals",
+        "significant changes",
+        "risk criteria"
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "What does Clause 9.1 require an organization to determine for monitoring and measurement?",
+      "gold_sections": [
+        "9.1 Monitoring, measurement, analysis and evaluation"
+      ],
+      "gold_pdf_pages": [
+        14
+      ],
+      "expected_keywords": [
+        "what",
+        "methods",
+        "when",
+        "who",
+        "results",
+        "valid results"
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "What does an internal audit need to determine about the information security management system?",
+      "gold_sections": [
+        "9.2.1 General"
+      ],
+      "gold_pdf_pages": [
+        14,
+        15
+      ],
+      "expected_keywords": [
+        "organization's own requirements",
+        "requirements of this document",
+        "effectively implemented and maintained"
+      ]
+    },
+    {
+      "id": "q16",
+      "question": "What inputs must management consider during a management review?",
+      "gold_sections": [
+        "9.3.2 Management review inputs"
+      ],
+      "gold_pdf_pages": [
+        15
+      ],
+      "expected_keywords": [
+        "audit results",
+        "monitoring and measurement results",
+        "risk assessment",
+        "risk treatment plan",
+        "continual improvement"
+      ]
+    },
+    {
+      "id": "q17",
+      "question": "What actions are required when a nonconformity occurs?",
+      "gold_sections": [
+        "10.2 Nonconformity and corrective action"
+      ],
+      "gold_pdf_pages": [
+        16
+      ],
+      "expected_keywords": [
+        "control and correct",
+        "consequences",
+        "causes",
+        "corrective action",
+        "effectiveness"
+      ]
+    },
+    {
+      "id": "q18",
+      "question": "What is the purpose of Annex A in relation to information security controls?",
+      "gold_sections": [
+        "Annex A Information security controls reference"
+      ],
+      "gold_pdf_pages": [
+        17
+      ],
+      "expected_keywords": [
+        "information security controls",
+        "ISO/IEC 27002:2022",
+        "6.1.3"
+      ]
+    },
+    {
+      "id": "q19",
+      "question": "What does Annex A control 5.15 address?",
+      "gold_sections": [
+        "5.15 Access control"
+      ],
+      "gold_pdf_pages": [
+        18
+      ],
+      "expected_keywords": [
+        "physical and logical access",
+        "information",
+        "business and information security requirements"
+      ]
+    },
+    {
+      "id": "q20",
+      "question": "What does Annex A control 8.15 require regarding logging?",
+      "gold_sections": [
+        "8.15 Logging"
+      ],
+      "gold_pdf_pages": [
+        22
+      ],
+      "expected_keywords": [
+        "logs",
+        "activities",
+        "exceptions",
+        "faults",
+        "stored",
+        "protected",
+        "analysed"
+      ]
+    }
+  ]
+}

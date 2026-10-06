@@ -1,0 +1,169 @@
+{
+  "questions": 20,
+  "metrics": {
+    "citation_accuracy": 0.975,
+    "citation_completeness": 1.0
+  },
+  "results": [
+    {
+      "id": "q01",
+      "question": "What is the purpose of ISO/IEC 27001 as described in the introduction?",
+      "answer": "The introduction states that ISO/IEC 27001 is intended to “provide requirements for establishing, implementing, maintaining and continually improving an information security management system.” It further explains that such a system “preserves the confidentiality, integrity and availability of information by applying a risk‑management process and gives confidence to interested parties that risks are adequately managed.”[ S3 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The cited source S3 contains the exact statements used in the answer, supporting both claims, and all factual claims in the answer are properly cited."
+    },
+    {
+      "id": "q02",
+      "question": "What does Clause 4.1 require an organization to determine?",
+      "answer": "Clause 4.1 requires an organization to determine the external and internal issues that are relevant to its purpose and that affect its ability to achieve the intended outcome(s) of its information security management system. [S3]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The answer cites [S3], which contains the exact wording of Clause 4.1, correctly supporting the claim. All factual claims in the answer are cited."
+    },
+    {
+      "id": "q03",
+      "question": "What must an organization determine when identifying the needs and expectations of interested parties?",
+      "answer": "When an organization identifies the needs and expectations of interested parties, it must determine:\n\n* the interested parties that are relevant to its information‑security management system;  \n* the relevant requirements of those interested parties;  \n* which of those requirements will be addressed through the information‑security management system.  \n\n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The single citation (S1) directly supports all three factual claims in the answer, covering the identification of relevant interested parties, their requirements, and which requirements will be addressed by the ISMS."
+    },
+    {
+      "id": "q04",
+      "question": "What factors must be considered when determining the scope of the information security management system?",
+      "answer": "The scope of an information security management system (ISMS) must be defined by taking into account:\n\n1. **External and internal issues** that affect the organization (as identified in Clause 4.1) – these shape the boundaries of what the ISMS will cover.  \n   [S1]\n\n2. **Requirements of interested parties** – the relevant needs and expectations of stakeholders, and the specific requirements that the ISMS will address (Clause 4.2).  \n   [S1]\n\n3. **Interfaces and dependencies** – the relationships and interdependencies between the organization’s own activities and those performed by other organizations, which influence how the ISMS is applied.  \n   [S1]\n\nThe resulting scope must be documented as part of the ISMS.  \n   [S1]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All factual claims in the answer are directly supported by the cited source S1, and every claim is appropriately cited."
+    },
+    {
+      "id": "q05",
+      "question": "What responsibilities does top management have under Clause 5.1?",
+      "answer": "Under Clause 5.1 “Leadership and commitment,” top management is required to:\n\na) **Ensure that the information security policy and the information security objectives are established and are compatible with the strategic direction of the organization** [ S4 ]  \nb) **Ensure the integration of the information security management system requirements into the organization’s processes** [ S4 ]  \nc) **Ensure that the resources needed for the information security management system are available** [ S4 ]  \nd) **Communicate the importance of effective information security management and of conforming to the information security management system requirements** [ S4 ]  \ne) **Ensure that the information security management system achieves its intended outcome(s)** [ S4 ]  \nf) **Direct and support persons to contribute to the effectiveness of the information security management system** [ S4 ]  \ng) **Promote continual improvement** [ S4 ]  \nh) **Support other relevant management roles to demonstrate their leadership as it applies to their areas of responsibility** [ S4 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "Each listed responsibility matches the eight items a–h in Clause 5.1 as presented in source S4, and every claim is appropriately cited."
+    },
+    {
+      "id": "q06",
+      "question": "What must an information security policy include under Clause 5.2?",
+      "answer": "Under Clause 5.2 an information security policy must contain the following elements:\n\n- be appropriate to the purpose of the organization;  \n- include information‑security objectives (or provide a framework for setting them);  \n- include a commitment to satisfy applicable information‑security requirements;  \n- include a commitment to continual improvement of the information‑security management system;  \n- be available as documented information;  \n- be communicated within the organization;  \n- be available to interested parties, as appropriate.  \n\n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All factual claims in the answer are directly supported by source S1, and every key element of Clause 5.2 is cited."
+    },
+    {
+      "id": "q07",
+      "question": "What criteria must be established as part of the information security risk assessment process?",
+      "answer": "The information security risk assessment process must establish **risk criteria** that include:\n\n1. **Risk acceptance criteria** – the thresholds or conditions under which identified risks are considered acceptable.  \n2. **Criteria for performing information security risk assessments** – the rules, methods, and parameters that guide how risk assessments are carried out.  \n\nThese criteria are required to be defined and applied by the organization as part of the risk assessment process.  \n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The answer correctly cites ISO/IEC 27001:2022 (S1) which states that the risk assessment process must establish risk criteria including risk acceptance criteria and criteria for performing assessments. No additional factual claims are omitted."
+    },
+    {
+      "id": "q08",
+      "question": "How does Clause 6.1.2 require information security risks to be analyzed?",
+      "answer": "Clause 6.1.2 requires the organization to analyse information security risks by:\n\n1. **Assessing the potential consequences** that would result if the identified risks (those linked to loss of confidentiality, integrity, and availability) were to materialise.  \n2. **Assessing the realistic likelihood** of the occurrence of those risks.  \n3. **Determining the levels of risk** that result from combining the assessed consequences and likelihoods.  \n\nThese steps are part of the risk‑assessment process that must be defined and applied by the organization.  \n[ S2 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All factual claims in the answer are directly supported by the cited source S2, and every claim is appropriately cited."
+    },
+    {
+      "id": "q09",
+      "question": "What is required in a Statement of Applicability under Clause 6.1.3?",
+      "answer": "A Statement of Applicability must contain the **necessary controls** identified in Clause 6.1.3 b) and c).  \n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The answer cites S1, which explicitly states that the Statement of Applicability must contain the necessary controls from clauses 6.1.3(b) and (c). The single factual claim is fully supported and cited."
+    },
+    {
+      "id": "q10",
+      "question": "What characteristics should information security objectives have under Clause 6.2?",
+      "answer": "Information security objectives, as defined in Clause 6.2, must possess the following characteristics:\n\n- **Be consistent with the information security policy** – [S1]  \n- **Be measurable (if practicable)** – [S1]  \n- **Take into account applicable information security requirements, and results from risk assessment and risk treatment** – [S1]  \n- **Be monitored** – [S1]  \n- **Be communicated** – [S1]  \n- **Be updated as appropriate** – [S1]  \n- **Be available as documented information** – [S1]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All seven characteristics listed in the answer are directly quoted from S1, and each claim is correctly cited. No additional factual claims are present that lack citations."
+    },
+    {
+      "id": "q11",
+      "question": "What does Clause 7.2 require regarding competence?",
+      "answer": "Clause 7.2 requires the organization to:\n\n* determine the necessary competence of the person(s) doing work under its control that affects its information‑security performance;  \n* ensure that these persons are competent on the basis of appropriate education, training, or experience;  \n* where applicable, take actions to acquire the necessary competence and evaluate the effectiveness of those actions;  \n* retain appropriate documented information as evidence of competence.  \n\n[S1]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All four factual claims in the answer directly match the text of Clause 7.2 in source S1, and each claim is appropriately cited."
+    },
+    {
+      "id": "q12",
+      "question": "What activities must be addressed when controlling documented information under Clause 7.5.3?",
+      "answer": "Under Clause 7.5.3 the organization must address the following activities when controlling documented information:  \n\n- **Distribution, access, retrieval and use** of the documents;  \n- **Storage and preservation**, including ensuring legibility;  \n- **Control of changes** (e.g., version control); and  \n- **Retention and disposition** of the documents.  \n\n[ S1 ] [ S2 ]",
+      "citation_accuracy": 0.5,
+      "citation_completeness": 1.0,
+      "reason": "Only S1 correctly supports the four activities; S2 does not. The claim is fully cited, so completeness is 1."
+    },
+    {
+      "id": "q13",
+      "question": "When must information security risk assessments be performed under Clause 8.2?",
+      "answer": "Information security risk assessments must be performed **at planned intervals or when significant changes are proposed or occur** (taking account of the criteria established in 6.1.2 a).  \n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The cited source S1 directly quotes Clause 8.2, which states that information security risk assessments must be performed at planned intervals or when significant changes are proposed or occur."
+    },
+    {
+      "id": "q14",
+      "question": "What does Clause 9.1 require an organization to determine for monitoring and measurement?",
+      "answer": "Clause 9.1 requires an organization to determine:\n\na) **What needs to be monitored and measured** – including information‑security processes and controls;  \nb) **The methods** for monitoring, measurement, analysis and evaluation that will produce valid, comparable and reproducible results;  \nc) **When** the monitoring and measuring shall be performed;  \nd) **Who** shall monitor and measure;  \ne) **When** the results from monitoring and measurement shall be analysed and evaluated;  \nf) **Who** shall analyse and evaluate these results.  \n\n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The answer correctly cites source S1, which contains the full list of items a)–f) that Clause 9.1 requires an organization to determine. All factual claims in the answer are supported by this citation, and the answer fully addresses the question."
+    },
+    {
+      "id": "q15",
+      "question": "What does an internal audit need to determine about the information security management system?",
+      "answer": "An internal audit must determine whether the information security management system **conforms to the organization’s own requirements for its information security management system**.  \n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The cited source S1 explicitly states that internal audits must determine whether the information security management system conforms to the organization’s own requirements."
+    },
+    {
+      "id": "q16",
+      "question": "What inputs must management consider during a management review?",
+      "answer": "Management must consider the following inputs during a management review:\n\n- The status of actions from previous management reviews.  \n- Changes in external and internal issues that are relevant to the information security management system.  \n- Changes in the needs and expectations of interested parties that are relevant to the information security management system.  \n- Feedback on the information security performance, including trends in:  \n  1. Nonconformities and corrective actions;  \n  2. Monitoring and measurement results;  \n  3. Audit results;  \n  4. Fulfilment of information‑security objectives.  \n- Feedback from interested parties.  \n- Results of risk assessment and the status of the risk‑treatment plan.  \n- Opportunities for continual improvement.  \n\n[ S1 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All listed inputs match the items in S1, and every claim is cited."
+    },
+    {
+      "id": "q17",
+      "question": "What actions are required when a nonconformity occurs?",
+      "answer": "When a nonconformity occurs, the organization must:\n\n1. **React to the nonconformity**  \n   a. Take action to control and correct it.  \n   b. Deal with the consequences.  \n   [S1]\n\n2. **Evaluate the need for action to eliminate the causes**  \n   a. Review the nonconformity.  \n   b. Determine the causes of the nonconformity.  \n   c. Determine whether similar nonconformities exist or could potentially occur.  \n   [S1]\n\n3. **Implement any action needed** (e.g., corrective measures).  \n   [S1]\n\n4. **Review the effectiveness of any corrective action taken**.  \n   [S1]\n\n5. **Make changes to the information security management system if necessary**.  \n   [S1]\n\n6. **Ensure corrective actions are appropriate to the effects of the nonconformities encountered**.  \n   [S2]\n\n7. **Maintain documented information** as evidence of:  \n   a. The nature of the nonconformities and any subsequent actions taken.  \n   b. The results of any corrective action.  \n   [S2]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All factual claims in the answer are directly supported by the cited ISO/IEC 27001:2022 sources, and every important claim has an appropriate citation."
+    },
+    {
+      "id": "q18",
+      "question": "What is the purpose of Annex A in relation to information security controls?",
+      "answer": "Annex A provides a reference list of possible information‑security controls that an organization can use when it selects controls in the risk‑treatment process.  It is intended to be compared with the controls identified in clause 6.1.3 b) so that the organization can verify that no necessary controls have been omitted and to ensure that the chosen controls are complete and aligned with the ISO/IEC 27002 standard.  \n\n[ S1 ]  \n[ S4 ]  \n[ S2 ]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "All factual claims in the answer are directly supported by the cited sources, and every claim has at least one citation."
+    },
+    {
+      "id": "q19",
+      "question": "What does Annex A control 5.15 address?",
+      "answer": "Annex A control 5.15 addresses **access control** – it requires that rules be established and implemented to control both physical and logical access to information and other associated assets, based on business and information‑security requirements. [S3]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The cited source S3 directly contains the text for Annex A control 5.15, confirming the claim about access control rules. All factual claims in the answer are supported by the citation."
+    },
+    {
+      "id": "q20",
+      "question": "What does Annex A control 8.15 require regarding logging?",
+      "answer": "Annex A control 8.15 requires that logs which record activities, exceptions, faults and other relevant events must be **produced, stored, protected and analysed**. [S1]",
+      "citation_accuracy": 1.0,
+      "citation_completeness": 1.0,
+      "reason": "The answer correctly cites source S1, which contains the exact wording of Annex A control 8.15. All factual claims in the answer are supported by the citation."
+    }
+  ]
+}

@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     qdrant_api_key: str = ""
     qdrant_collection: str = "docai_chunks"
 
+
     groq_api_key: str
     groq_model: str = "openai/gpt-oss-20b"
 

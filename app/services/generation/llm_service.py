@@ -6,7 +6,6 @@ from app.core.config import settings
 
 
 class LLMService:
-
     def __init__(self):
         self.client = Groq(
             api_key=settings.groq_api_key
@@ -31,7 +30,6 @@ class LLMService:
         )
 
         for chunk in stream:
-
             if not chunk.choices:
                 continue
 
